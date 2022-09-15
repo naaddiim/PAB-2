@@ -12,7 +12,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/btnNotify"
-        tools:text="Notify"
+        android:text="Notify"
         android:textSize="24dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
