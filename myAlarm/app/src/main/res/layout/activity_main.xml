@@ -21,7 +21,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/ivOnceDate"
+            android:id="@+id/ibOnceDate"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_date_range_24"
@@ -42,7 +42,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/ivOnceTime"
+            android:id="@+id/ibOnceTime"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_access_time_24"
@@ -83,28 +83,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/ivRepeatDate"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_date_range_24"
-            style="@style/Widget.AppCompat.ImageButton"/>
-
-        <TextView
-            android:id="@+id/tvRepeatDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="8dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/ivRepeatTime"
+            android:id="@+id/ibRepeatTime"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_access_time_24"
