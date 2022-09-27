@@ -1,4 +1,4 @@
-package com.if5b.myFirstGoogleMap;
+package com.mdp.if3a.peta;
 
 import org.junit.Test;
 
