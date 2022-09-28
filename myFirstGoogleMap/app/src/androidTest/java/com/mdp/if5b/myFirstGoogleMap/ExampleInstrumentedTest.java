@@ -1,4 +1,4 @@
-package com.mdp.if3a.peta;
+package com.mdp.if5b.myFirstGoogleMap;
 
 import android.content.Context;
 

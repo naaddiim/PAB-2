@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.mdp.if3a.peta'
+    namespace 'com.mdp.if5b.myFirstGoogleMap'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.mdp.if3a.peta"
+        applicationId "com.mdp.if5b.myFirstGoogleMap"
         minSdk 21
         targetSdk 32
         versionCode 1

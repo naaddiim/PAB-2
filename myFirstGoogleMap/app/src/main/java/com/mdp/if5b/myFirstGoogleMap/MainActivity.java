@@ -1,4 +1,4 @@
-package com.mdp.if3a.peta;
+package com.mdp.if5b.myFirstGoogleMap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.mdp.if3a.peta.databinding.ActivityMainBinding;
+import com.mdp.if5b.myFirstGoogleMap.R;
+import com.mdp.if5b.myFirstGoogleMap.databinding.ActivityMainBinding;
 
 import java.util.ArrayList;
 import java.util.List;
