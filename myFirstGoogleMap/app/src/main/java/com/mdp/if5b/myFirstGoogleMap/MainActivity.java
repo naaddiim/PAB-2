@@ -36,6 +36,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     private ActivityMainBinding binding;
     private GoogleMap mMap;
+    //tes
     private List<Lokasi> restaurantList = new ArrayList<>();
     private List<Lokasi> hospitalList = new ArrayList<>();
     private ActivityResultLauncher<String[]> locationPermissionRequest = registerForActivityResult(
