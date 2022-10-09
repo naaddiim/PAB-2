@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void bukaActivityTambah(View view) {
-        startActivity(new Intent(MainActivity.this, tambah.class));
+        startActivity(new Intent(MainActivity.this, TambahActivity.class));
     }
 
 }
