@@ -2,6 +2,7 @@ package com.if5b.myfirstcrudsql;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -49,6 +50,36 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(FIELD_YEAR, year);
 
         long result = db.insert(TABLE_NAME, null, cv);
+        return result;
+    }
+
+    public long editBookById(String id, String title, String author, int year) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(FIELD_TITLE, title);
+        cv.put(FIELD_AUTHOR, author);
+        cv.put(FIELD_YEAR, year);
+
+        long result = db.update(TABLE_NAME, cv, "id = ?", new String[]{id});
+        return result;
+    }
+
+    public Cursor getAllBook() {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+
+        return cursor;
+    }
+
+    public long deleteBookById(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME,"id = ?", new String[]{id});
         return result;
     }
 

@@ -2,24 +2,23 @@ package com.if5b.myfirstcrudsql;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.if5b.myfirstcrudsql.databinding.ActivityTambahBinding;
+import com.if5b.myfirstcrudsql.databinding.ActivityInsertBinding;
 
-public class TambahActivity extends AppCompatActivity {
+public class InsertActivity extends AppCompatActivity {
 
-    private ActivityTambahBinding binding;
+    private ActivityInsertBinding binding;
     private EditText etJudul, etPenulis, etTahun;
     private Button btnSimpan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityTambahBinding.inflate(getLayoutInflater());
+        binding = ActivityInsertBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.btnSimpan.setOnClickListener(new View.OnClickListener() {
@@ -38,16 +37,16 @@ public class TambahActivity extends AppCompatActivity {
                     binding.etJudul.setError("Tahun tidak boleh kosong");
                 }
                 else {
-                    MyDatabaseHelper dB = new MyDatabaseHelper(TambahActivity.this);
+                    MyDatabaseHelper dB = new MyDatabaseHelper(InsertActivity.this);
                     long result = dB.addBook(getTitle, getAuthor, Integer.valueOf(getYear));
 
                     if(result == -1) {
-                        Toast.makeText(TambahActivity.this, "Gagal Menambah Data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(InsertActivity.this, "Gagal Menambah Data", Toast.LENGTH_SHORT).show();
                         binding.etJudul.requestFocus();
                     }
                     else {
-                        Toast.makeText(TambahActivity.this, "Tambah Data Berhasil", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(TambahActivity.this, MainActivity.class));
+                        Toast.makeText(InsertActivity.this, "Tambah Data Berhasil", Toast.LENGTH_SHORT).show();
+
                         finish();
                     }
                 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TambahActivity">
+    tools:context=".EditActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:id="@+id/tvJudulLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INPUT DATA BARU"
+            android:text="UBAH DATA BUKU"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
             />
@@ -51,10 +51,10 @@
             />
 
         <Button
-            android:id="@+id/btnSimpan"
+            android:id="@+id/btnUbah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SIMPAN"
+            android:text="UBAH"
             android:layout_marginTop="32dp"
             />
 
