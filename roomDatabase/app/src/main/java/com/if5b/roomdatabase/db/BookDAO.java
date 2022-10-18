@@ -10,7 +10,6 @@ import java.util.List;
 public interface BookDAO {
     @Insert
     void insertBook(Book book);
-    //aaaaaa
     @Query("Select * From book")
     List<Book> getAllBooks();
 }
