@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.if5b.roomdatabase.databinding.ActivityShowDataBinding;
 import com.if5b.roomdatabase.db.Book;
+import com.if5b.roomdatabase.loaders.DeleteBookLoader;
 import com.if5b.roomdatabase.loaders.GetBookLoader;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
 public class ShowDataActivity extends AppCompatActivity {
     public static final int DATA_LOADER_CODE = 122;
     private static final int EDIT_CODE = 123;
+    private static final int DELETE_LOADER_CODE = 124;
     ActivityShowDataBinding binding;
 
     @Override
@@ -69,7 +71,43 @@ public class ShowDataActivity extends AppCompatActivity {
             public void onEditClicked(Book book) {
                 gotoupdateBookActivity(book);
             }
+
+            @Override
+            public void onDeleteClicked(int bookId) {
+                deleteBook(bookId);
+            }
         });
+    }
+
+    private void deleteBook(int bookId) {
+        showProgressBar();
+        Bundle args = new Bundle();
+        args.putInt("id", bookId);
+        LoaderManager.getInstance(this).restartLoader(DELETE_LOADER_CODE, args, new LoaderManager.LoaderCallbacks<Integer>() {
+            @NonNull
+            @Override
+            public Loader<Integer> onCreateLoader(int id, @Nullable Bundle args) {
+                return new DeleteBookLoader(ShowDataActivity.this, args.getInt("id"));
+            }
+
+            @Override
+            public void onLoadFinished(@NonNull Loader<Integer> loader, Integer data) {
+                hideProgressBar();
+                if(data!=-1){
+                    itemDeleted();
+                }
+            }
+
+            @Override
+            public void onLoaderReset(@NonNull Loader<Integer> loader) {
+
+            }
+        }).forceLoad();
+    }
+
+    private void itemDeleted() {
+        Toast.makeText(this, "Book Deleted", Toast.LENGTH_SHORT).show();
+        getBook();
     }
 
     private void gotoupdateBookActivity(Book book) {

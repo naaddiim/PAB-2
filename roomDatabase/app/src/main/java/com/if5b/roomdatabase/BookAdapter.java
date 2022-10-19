@@ -47,7 +47,7 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvAuthor, tvYear;
-        ImageView ivEdit;
+        ImageView ivEdit, ivDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -55,6 +55,7 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             tvYear = itemView.findViewById(R.id.tvYear);
             ivEdit = itemView.findViewById(R.id.ivEdit);
+            ivDelete = itemView.findViewById(R.id.ivDelete);
         }
 
         void bindData(Book book){
@@ -69,6 +70,14 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     }
                 }
             });
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener!=null){
+                        listener.onDeleteClicked(book.getId());
+                    }
+                }
+            });
         }
     }
 
@@ -78,5 +87,6 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OnClickListener{
         void onEditClicked(Book book);
+        void onDeleteClicked(int bookId);
     }
 }

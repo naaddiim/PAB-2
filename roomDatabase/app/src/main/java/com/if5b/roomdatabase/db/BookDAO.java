@@ -1,6 +1,7 @@
 package com.if5b.roomdatabase.db;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -15,5 +16,8 @@ public interface BookDAO {
     List<Book> getAllBooks();
 
     @Update
-    int updateUser(Book book);
+    int updateBook(Book book);
+
+    @Query("DELETE FROM book WHERE id = :bookId")
+    int deleteBook(int bookId);
 }
