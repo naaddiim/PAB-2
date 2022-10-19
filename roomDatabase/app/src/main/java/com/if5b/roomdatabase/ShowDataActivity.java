@@ -7,9 +7,11 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.if5b.roomdatabase.databinding.ActivityShowDataBinding;
 import com.if5b.roomdatabase.db.Book;
@@ -19,6 +21,7 @@ import java.util.List;
 
 public class ShowDataActivity extends AppCompatActivity {
     public static final int DATA_LOADER_CODE = 122;
+    private static final int EDIT_CODE = 123;
     ActivityShowDataBinding binding;
 
     @Override
@@ -61,6 +64,36 @@ public class ShowDataActivity extends AppCompatActivity {
         BookAdapter bookAdapter = new BookAdapter(this, data);
         binding.rvBook.setLayoutManager(new LinearLayoutManager(this));
         binding.rvBook.setAdapter(bookAdapter);
+        bookAdapter.setOnClickListener(new BookAdapter.OnClickListener() {
+            @Override
+            public void onEditClicked(Book book) {
+                gotoupdateBookActivity(book);
+            }
+        });
+    }
+
+    private void gotoupdateBookActivity(Book book) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("edit", true);
+        intent.putExtra("book", book);
+        startActivityForResult(intent, EDIT_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode==EDIT_CODE){
+            if(resultCode==RESULT_OK){
+                bookUpdated();
+            }
+        }
+        else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    private void bookUpdated() {
+        Toast.makeText(this, "Book updated Successfully !", Toast.LENGTH_SHORT).show();
+        getBook();
     }
 
     private void hideProgressBar() {

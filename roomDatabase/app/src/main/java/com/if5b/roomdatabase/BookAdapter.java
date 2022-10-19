@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import java.util.List;
 public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context ctx;
     private List<Book> bookList;
+    private OnClickListener listener;
 
     public BookAdapter(Context ctx, List<Book> bookList) {
         this.ctx = ctx;
@@ -45,18 +47,36 @@ public class BookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvAuthor, tvYear;
+        ImageView ivEdit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             tvYear = itemView.findViewById(R.id.tvYear);
+            ivEdit = itemView.findViewById(R.id.ivEdit);
         }
 
         void bindData(Book book){
             tvTitle.setText("Title : "+book.getTitle());
             tvAuthor.setText("Author : "+book.getAuthor());
             tvYear.setText("Year : "+book.getYear());
+            ivEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener!=null){
+                        listener.onEditClicked(book);
+                    }
+                }
+            });
         }
+    }
+
+    public void setOnClickListener(OnClickListener listener){
+        this.listener = listener;
+    }
+
+    public interface OnClickListener{
+        void onEditClicked(Book book);
     }
 }
