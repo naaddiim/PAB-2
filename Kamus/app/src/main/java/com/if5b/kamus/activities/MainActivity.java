@@ -15,6 +15,7 @@ import com.if5b.kamus.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    //aa
     private ActivityMainBinding binding;
 
     @Override
