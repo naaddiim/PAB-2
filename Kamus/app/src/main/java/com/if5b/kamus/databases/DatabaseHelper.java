@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DATABASE_NAME = "db_kamus";
     private static final int DATABASE_VERSION = 1;
 
-    public static String CREATE_TABLE_QUERY = "CREATE TABLE "+ TABLE_NAME + " (" + _ID + "INTEGER PRIMARY KEY AUTOINCREMENT" +
+    public static String CREATE_TABLE_QUERY = "CREATE TABLE "+ TABLE_NAME + " (" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             WORD_COLUMN + " TEXT NOT NULL, " + DESC_COLUMN + " TEXT NOT NULL);";
 
     public DatabaseHelper(@Nullable Context context) {
