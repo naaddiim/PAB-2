@@ -10,6 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import com.if5b.kamus.models.Kamus;
 
@@ -77,6 +78,29 @@ public class KamusHelper {
         }
         cursor.close();
         return  arrayList;
+    }
+
+    //insert bulk
+    public void beginTransaction() {
+        database.beginTransaction();
+    }
+
+    public void setTransactionSuccess() {
+        database.setTransactionSuccessful();
+    }
+
+    public void endTransaction() {
+        database.endTransaction();
+    }
+    
+    public void insertTransactionData(Kamus kamus) {
+        String sql = "INSERT INTO " + TABLE_NAME + " (" + WORD_COLUMN + ", " + DESC_COLUMN +
+                ") VALUES (?, ?)";
+        SQLiteStatement statement = database.compileStatement(sql);
+        statement.bindString(1, kamus.getTitle());
+        statement.bindString(2, kamus.getDescription());
+        statement.execute();
+        statement.clearBindings();
     }
 
     public long insertData(Kamus kamus) {
