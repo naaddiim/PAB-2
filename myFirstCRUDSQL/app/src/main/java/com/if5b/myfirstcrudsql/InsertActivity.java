@@ -13,8 +13,6 @@ import com.if5b.myfirstcrudsql.databinding.ActivityInsertBinding;
 public class InsertActivity extends AppCompatActivity {
 
     private ActivityInsertBinding binding;
-    private EditText etJudul, etPenulis, etTahun;
-    private Button btnSimpan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
