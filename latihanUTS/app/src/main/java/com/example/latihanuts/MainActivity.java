@@ -11,14 +11,16 @@ import android.widget.Toast;
 
 import com.example.latihanuts.databinding.ActivityMainBinding;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     BookAdapter bookAdapter;
+
     DatabaseHelper databaseHelper;
-    ArrayList<String> arrayid, arrayIsbn, arrayJudul, arrayDeskripsi, arrayKategori, arrayHarga;
+    ArrayList<Book> arrayBook;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,23 +37,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void getAllData() {
         Cursor cursor = databaseHelper.getAllBook();
+
         if(cursor.getCount() == 0) {
             Toast.makeText(this, "Data buku tidak ada", Toast.LENGTH_SHORT).show();
         }
         else {
             while(cursor.moveToNext()) {
-                arrayid.add(cursor.getString(0));
-                arrayIsbn.add(cursor.getString(1));
-                arrayJudul.add(cursor.getString(2));
-                arrayDeskripsi.add(cursor.getString(3));
-                arrayKategori.add(cursor.getString(4));
-                arrayHarga.add(cursor.getString(5));
+                Book book = new Book(cursor.getString(0),cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
+                        cursor.getString(5));
+                arrayBook.add(book);
             }
         }
     }
@@ -59,16 +57,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        arrayid = new ArrayList<>();
-        arrayHarga = new ArrayList<>();
-        arrayKategori = new ArrayList<>();
-        arrayIsbn = new ArrayList<>();
-        arrayDeskripsi = new ArrayList<>();
-        arrayJudul = new ArrayList<>();
+        arrayBook = new ArrayList<>();
         getAllData();
-        bookAdapter = new BookAdapter(MainActivity.this, arrayid, arrayIsbn, arrayJudul, arrayKategori, arrayDeskripsi, arrayHarga);
+        bookAdapter = new BookAdapter(MainActivity.this, arrayBook);
         binding.rvBook.setAdapter(bookAdapter);
         binding.rvBook.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
 
     }
 }

@@ -44,7 +44,10 @@
             android:hint="ISBN"
             android:textAlignment="center"
             android:textColor="#f8bbd0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="number"
+            android:maxLines="1"
+            android:imeOptions="actionNext"/>
 
     </LinearLayout>
 
@@ -71,7 +74,10 @@
             android:hint="Judul"
             android:textAlignment="center"
             android:textColor="#f8bbd0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionNext"/>
     </LinearLayout>
 
     <LinearLayout
@@ -97,7 +103,10 @@
             android:hint="Kategori"
             android:textAlignment="center"
             android:textColor="#f8bbd0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionNext"/>
     </LinearLayout>
 
     <LinearLayout
@@ -123,7 +132,10 @@
             android:hint="Deskripsi"
             android:textAlignment="center"
             android:textColor="#f8bbd0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionNext"/>
     </LinearLayout>
 
     <LinearLayout
@@ -149,7 +161,9 @@
             android:hint="Harga"
             android:textAlignment="center"
             android:textColor="#f8bbd0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:inputType="number"
+            android:imeOptions="actionDone"/>
     </LinearLayout>
 
     <Button

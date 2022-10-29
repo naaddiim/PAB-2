@@ -49,15 +49,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Fungsi Helper untuk Insert Data
-    public long insertBook(String isbn, String judul, String kategori, String deskripsi, String harga) {
+    public long insertBook(Book book) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(COLUMN_ISBN, isbn);
-        contentValues.put(COLUMN_JUDUL, judul);
-        contentValues.put(COLUMN_KATEGORI, kategori);
-        contentValues.put(COLUMN_DESKRIPSI, deskripsi);
-        contentValues.put(COLUMN_HARGA, harga);
+        contentValues.put(COLUMN_ISBN, book.getIsbn());
+        contentValues.put(COLUMN_JUDUL, book.getJudul());
+        contentValues.put(COLUMN_KATEGORI, book.getKategori());
+        contentValues.put(COLUMN_DESKRIPSI, book.getDeskripsi());
+        contentValues.put(COLUMN_HARGA, book.getHarga());
 
         long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
         return result;

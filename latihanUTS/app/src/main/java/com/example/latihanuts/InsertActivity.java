@@ -42,8 +42,9 @@ public class InsertActivity extends AppCompatActivity {
                     binding.etHarga.setError("Harga tidak boleh kosong");
                 }
                 else {
+                    Book book = new Book(getIsbn, getJudul, getKategori, getDeskripsi, getHarga);
                     DatabaseHelper databaseHelper = new DatabaseHelper(InsertActivity.this);
-                    long result = databaseHelper.insertBook(getIsbn, getJudul, getKategori, getDeskripsi, getHarga);
+                    long result = databaseHelper.insertBook(book);
 
                     if(result == -1) {
                         Toast.makeText(InsertActivity.this, "Gagal Menambah Data", Toast.LENGTH_SHORT).show();

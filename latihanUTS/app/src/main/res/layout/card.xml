@@ -1,62 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_margin="16dp">
 
-    <TextView
-        android:id="@+id/tvId"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:textSize="20sp"
-        tools:text="id" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvISBN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:layout_below="@id/tvId"
-        android:textSize="20sp"
-        tools:text="ISBN" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:scaleType="center"
+            android:src="@drawable/tes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvJudul"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvISBN"
-        android:layout_marginVertical="8dp"
-        android:textSize="20sp"
-        tools:text="Judul" />
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:textColor="#FF6464"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="id" />
 
-    <TextView
-        android:id="@+id/tvKategori"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvJudul"
-        android:layout_marginVertical="8dp"
-        android:textSize="20sp"
-        tools:text="Kategori" />
+        <TextView
+            android:id="@+id/tvISBN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvId"
+            android:layout_marginLeft="178dp"
+            android:layout_marginBottom="70dp"
+            android:textColor="#143F6B"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="ISBN" />
 
-    <TextView
-        android:id="@+id/tvDeskripsi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvKategori"
-        android:layout_marginVertical="8dp"
-        android:textSize="20sp"
-        tools:text="Deskripsi" />
+        <TextView
+            android:id="@+id/tvJudul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvISBN"
+            android:layout_marginEnd="178dp"
+            android:textColor="#FF6464"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Judul" />
 
-    <TextView
-        android:id="@+id/tvHarga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvDeskripsi"
-        android:layout_marginVertical="8dp"
-        android:textSize="20sp"
-        tools:text="Harga" />
+        <TextView
+            android:id="@+id/tvKategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvJudul"
+            android:layout_marginVertical="8dp"
+            android:textColor="#143F6B"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/tvISBN"
+            app:layout_constraintTop_toBottomOf="@+id/tvISBN"
+            tools:text="Kategori" />
+
+        <TextView
+            android:id="@+id/tvDeskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvKategori"
+            android:layout_marginVertical="8dp"
+            android:textColor="#143F6B"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/tvISBN"
+            app:layout_constraintTop_toBottomOf="@+id/tvKategori"
+            tools:text="Deskripsi" />
+
+        <TextView
+            android:id="@+id/tvHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvDeskripsi"
+            android:layout_marginVertical="8dp"
+            android:textColor="#143F6B"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/tvISBN"
+            app:layout_constraintTop_toBottomOf="@+id/tvDeskripsi"
+            tools:text="Harga" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

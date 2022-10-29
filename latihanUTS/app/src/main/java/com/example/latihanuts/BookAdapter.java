@@ -16,16 +16,18 @@ import java.util.ArrayList;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     private Context ctx;
-    private ArrayList arrayId, arrayISBN, arrayJudul, arrayKategori, arrayDeskripsi, arrayHarga;
+    private ArrayList<Book> arrayBook;
+//    private ArrayList arrayId, arrayIsbn, arrayJudul, arrayKategori, arrayDeskripsi, arrayHarga;
 
-    public BookAdapter(Context ctx, ArrayList arrayId, ArrayList arrayISBN, ArrayList arrayJudul, ArrayList arrayKategori, ArrayList arrayDeskripsi, ArrayList arrayHarga) {
+    public BookAdapter(Context ctx, ArrayList<Book> arrayBook) {
         this.ctx = ctx;
-        this.arrayId = arrayId;
-        this.arrayISBN = arrayISBN;
-        this.arrayJudul = arrayJudul;
-        this.arrayKategori = arrayKategori;
-        this.arrayDeskripsi = arrayDeskripsi;
-        this.arrayHarga = arrayHarga;
+        this.arrayBook = arrayBook;
+//        this.arrayId = arrayId;
+//        this.arrayIsbn = arrayIsbn;
+//        this.arrayJudul = arrayJudul;
+//        this.arrayKategori = arrayKategori;
+//        this.arrayDeskripsi = arrayDeskripsi;
+//        this.arrayHarga = arrayHarga;
     }
 
     @NonNull
@@ -36,17 +38,17 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
-        holder.tvId.setText(arrayId.get(position).toString());
-        holder.tvIsbn.setText(arrayISBN.get(position).toString());
-        holder.tvJudul.setText(arrayJudul.get(position).toString());
-        holder.tvKategori.setText(arrayKategori.get(position).toString());
-        holder.tvDeskripsi.setText(arrayDeskripsi.get(position).toString());
-        holder.tvHarga.setText(arrayHarga.get(position).toString());
+        holder.tvId.setText(arrayBook.get(position).getId());
+        holder.tvIsbn.setText(arrayBook.get(position).getIsbn());
+        holder.tvJudul.setText(arrayBook.get(position).getJudul());
+        holder.tvKategori.setText(arrayBook.get(position).getKategori());
+        holder.tvDeskripsi.setText(arrayBook.get(position).getDeskripsi());
+        holder.tvHarga.setText(arrayBook.get(position).getHarga());
     }
 
     @Override
     public int getItemCount() {
-        return arrayId.size();
+        return arrayBook.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
