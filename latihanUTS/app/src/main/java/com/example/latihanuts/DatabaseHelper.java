@@ -74,4 +74,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    // Fungsi Helper untuk editBuku
+
+    public long editBookById(Book book) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(COLUMN_ISBN, book.getIsbn());
+        contentValues.put(COLUMN_JUDUL, book.getJudul());
+        contentValues.put(COLUMN_KATEGORI, book.getKategori());
+        contentValues.put(COLUMN_DESKRIPSI, book.getDeskripsi());
+        contentValues.put(COLUMN_HARGA, book.getHarga());
+
+        long result = sqLiteDatabase.update(TABLE_NAME, contentValues, "id = ?", new String[]{book.getId()});
+        return result;
+    }
+
+    public long deleteBookById(Book book) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        long result = sqLiteDatabase.delete(TABLE_NAME, "id = ?", new String[]{book.getId()});
+        return  result;
+
+    }
 }

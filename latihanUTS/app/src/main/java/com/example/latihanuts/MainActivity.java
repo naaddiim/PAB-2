@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     ArrayList<Book> arrayBook;
+
+    public static int dataPosition = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         bookAdapter = new BookAdapter(MainActivity.this, arrayBook);
         binding.rvBook.setAdapter(bookAdapter);
         binding.rvBook.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        binding.rvBook.smoothScrollToPosition(dataPosition);
 
 
     }
