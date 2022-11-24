@@ -1,5 +1,9 @@
 package com.if5b.roomdatabase;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +29,15 @@ public class ShowDataActivity extends AppCompatActivity {
     private static final int EDIT_CODE = 123;
     private static final int DELETE_LOADER_CODE = 124;
     ActivityShowDataBinding binding;
+    private ActivityResultLauncher<Intent> intentActivityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+                if(result.getResultCode()==RESULT_OK){
+                    bookUpdated();
+                }
+        }
+    });
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,20 +127,20 @@ public class ShowDataActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("edit", true);
         intent.putExtra("book", book);
-        startActivityForResult(intent, EDIT_CODE);
+        intentActivityResultLauncher.launch(intent);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode==EDIT_CODE){
-            if(resultCode==RESULT_OK){
-                bookUpdated();
-            }
-        }
-        else{
-            super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        if(requestCode==EDIT_CODE){
+//            if(resultCode==RESULT_OK){
+//                bookUpdated();
+//            }
+//        }
+//        else{
+//            super.onActivityResult(requestCode, resultCode, data);
+//        }
+//    }
 
     private void bookUpdated() {
         Toast.makeText(this, "Book updated Successfully !", Toast.LENGTH_SHORT).show();

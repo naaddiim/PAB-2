@@ -97,7 +97,6 @@
         app:layout_constraintTop_toBottomOf="@id/btnRegister"
         android:layout_margin="8dp"
         android:text="Sudah punya akun ? Silahkan Login dulu"
-        android:background="null"
         android:textColor="@color/white"
         android:textSize="12sp"
         />
