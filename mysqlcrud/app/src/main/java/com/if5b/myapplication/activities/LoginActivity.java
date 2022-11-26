@@ -16,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivitiy extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
 
 
@@ -29,7 +29,7 @@ public class LoginActivitiy extends AppCompatActivity {
         binding.btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivitiy.this, RegisterActivity.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
 
@@ -63,16 +63,17 @@ public class LoginActivitiy extends AppCompatActivity {
                     public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
                         if (response.code() == 200) {
                             if(response.body().getSuccess() == 1) {
-                                Toast.makeText(LoginActivitiy.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(LoginActivitiy.this, MainActivity.class));
+                                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                ApiService.setValue(LoginActivity.this, MainActivity.KEY_USERNAME, username);
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 finish();
                             }
                             else {
-                                Toast.makeText(LoginActivitiy.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                         else {
-                            Toast.makeText(LoginActivitiy.this, "Response : " + response.code(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Response : " + response.code(), Toast.LENGTH_SHORT).show();
                         }
                     }
 

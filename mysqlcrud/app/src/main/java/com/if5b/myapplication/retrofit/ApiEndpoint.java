@@ -1,5 +1,6 @@
 package com.if5b.myapplication.retrofit;
 
+import com.if5b.myapplication.model.Post;
 import com.if5b.myapplication.model.ValueNoData;
 import com.if5b.myapplication.model.ValueWithData;
 
@@ -27,7 +28,7 @@ public interface ApiEndpoint {
     // End Point get all Post
     @POST("getAllPost")
     @FormUrlEncoded
-    Call<ValueWithData> getAllPost(@Field("key") String key);
+    Call<ValueWithData<Post>> getAllPost(@Field("key") String key);
 
     // End Point insert Post
     @POST("insertPost")
