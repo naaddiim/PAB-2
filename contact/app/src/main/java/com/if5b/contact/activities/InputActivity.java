@@ -96,7 +96,7 @@ public class InputActivity extends AppCompatActivity {
     }
 
     private void userUpdated() {
-        setResult(RESULT_OK);
+//        setResult(RESULT_OK);
         finish();
     }
 

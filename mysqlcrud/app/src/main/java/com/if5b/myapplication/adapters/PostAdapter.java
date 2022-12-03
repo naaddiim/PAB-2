@@ -3,6 +3,7 @@ package com.if5b.myapplication.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,11 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private List<Post> data = new ArrayList<>();
+    private OnClickListener listener;
+
+    public PostAdapter() {
+
+    }
 
     public void setData(List<Post> data) {
         this.data = data;
@@ -35,6 +41,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.tvContent.setText(post.getContent());
         holder.tvDate.setText(post.getCreatedDate());
         holder.tvUsername.setText(post.getUsername());
+        holder.ivEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener != null) {
+                    listener.onEditClicked(post);
+                }
+            }
+        });
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(listener != null) {
+                    int id = Integer.parseInt(post.getId());
+                    listener.onDeleteClicked(id);
+                }
+            }
+        });
     }
 
     @Override
@@ -44,12 +67,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvContent, tvDate, tvUsername;
+        ImageView ivEdit, ivDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvContent = itemView.findViewById(R.id.tvContent);
-            tvDate = itemView.findViewById(R.id.tvCreatedAt);
+            tvDate = itemView.findViewById(R.id.tvDate);
             tvUsername = itemView.findViewById(R.id.tvUsername);
+            ivEdit = itemView.findViewById(R.id.ivEdit);
+            ivDelete = itemView.findViewById(R.id.ivDelete);
         }
+    }
+
+    public void setOnClickListener(OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnClickListener {
+        void onEditClicked(Post post);
+        void onDeleteClicked(int id);
     }
 }

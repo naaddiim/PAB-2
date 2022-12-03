@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                     binding.etKonfirmasiPassword.setError("Password atau konfirmasi password salah");
                 }
                 if(isRegister) {
-                    ApiService.endpoint().register("dirumahaja", username, password)
+                    ApiService.endpoint().register(MainActivity.KEY_API, username, password)
                             .enqueue(new Callback<ValueNoData>() {
                                 @Override
                                 public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {

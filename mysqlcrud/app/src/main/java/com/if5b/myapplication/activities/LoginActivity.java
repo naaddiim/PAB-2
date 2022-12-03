@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void sendLoginRequest(String username, String password) {
-        ApiService.endpoint().login("dirumahaja", username, password)
+        ApiService.endpoint().login(MainActivity.KEY_API, username, password)
                 .enqueue(new Callback<ValueNoData>() {
                     @Override
                     public void onResponse(Call<ValueNoData> call, Response<ValueNoData> response) {
