@@ -4,14 +4,18 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.if5b.myapplication.R;
 import com.if5b.myapplication.adapters.PostAdapter;
 import com.if5b.myapplication.databinding.ActivityMainBinding;
 import com.if5b.myapplication.model.Post;
@@ -54,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ApiService.deleteValue(MainActivity.this);
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
+//        binding.btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ApiService.deleteValue(MainActivity.this);
+//                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//                finish();
+//            }
+//        });
 
         binding.btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,5 +162,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.action_logout) {
+            ApiService.deleteValue(this);
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return true;
+        }
+        if(id == R.id.action_refresh){
+            getAllPost();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
